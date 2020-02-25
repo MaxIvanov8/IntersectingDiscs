@@ -1,4 +1,4 @@
-# Intervals
+# Intersecting discs on ray
 Solution of the intersecting discs problem
 
 We draw N discs on a plane. The discs are numbered from 0 to N − 1. A zero-indexed array A of N non-negative integers, specifying the radiuses of the discs, is given. The J-th disc is drawn with its center at (J, 0) and radius A[J].
