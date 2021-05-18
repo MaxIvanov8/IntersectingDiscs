@@ -1,27 +1,28 @@
 ﻿using System.Linq;
 
-namespace Intervals
+namespace Interval
 {
-    class Disc
+    internal class Disc
     {
-        private long _left { get; set; }
-        private long _right { get; set; }
+        private long _left;
+        private long _right;
 
-        public static int Func(int[] A)
+        public static int Func(int[] array)
         {
-            var discs = new Disc[A.Length];
-            for (int i = 0; i < A.Length; i++)
+
+            var discs = new Disc[array.Length];
+            for (var i = 0; i < array.Length; i++)
                 discs[i] = new Disc()
                 {
-                    _left = i - A[i],
-                    _right = i + A[i]
+                    _left = i - array[i],
+                    _right = i + array[i]
                 };
             discs = discs.OrderBy(i => i._left).ToArray();
-            int sum = 0;
-            for (int i = 0; i < discs.Length; i++)
+            var sum = 0;
+            for (var i = 0; i < discs.Length; i++)
             {
                 var right = discs[i]._right;
-                for (int j = i + 1; j < discs.Length && discs[j]._left <= right; j++)
+                for (var j = i + 1; j < discs.Length && discs[j]._left <= right; j++)
                     sum++;
             }
             return sum;

@@ -1,32 +1,32 @@
 ﻿using System;
+using System.Linq;
 
-namespace Intervals
+namespace Interval
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            var A = Input();
-            if (A == null)
+            var input = Input();
+            if (input == null)
             {
                 return;
             }
-            var res = Disc.Func(A);
+            var res = Disc.Func(input);
             Console.WriteLine("Count of intersecting discs: " + res);
             Console.Read();
         }
 
-        static int[] Input()
+        private static int[] Input()
         {
             Console.WriteLine("Input radius of every disc");
             var input = Console.ReadLine().Split();
-            int[] temp = new int[input.Length];
-            for (int i = 0; i < input.Length; ++i)
-                if (!int.TryParse(input[i], out temp[i]))
-                {
-                    Console.WriteLine("Please, enter integers");
-                    return null;
-                }
+            var temp = new int[input.Length];
+            if (input.Where((t, i) => !int.TryParse(t, out temp[i])).Any())
+            {
+                Console.WriteLine("Please, enter integers");
+                return null;
+            }
             return temp;
         }
     }        
